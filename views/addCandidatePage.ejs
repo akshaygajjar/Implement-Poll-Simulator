@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Candidate View</title>
+  </head>
+  <body>
+    <header>Add Candidate View</header>
+    <header>
+      <p>
+        <a href="<%= baseURL %>/admin">Back to Home</a>
+      </p>
+    </header>
+    <div>
+      <form action="/addCandidate" method="post">
+        <input type="text" name="candidateID" id="candidateID" />
+        <input type="text" name="candidateName" id="candidateName" />
+
+        <input type="submit" value="Add Candidate" />
+      </form>
+    </div>
+
+    <div>
+      <% if(msgCode == "CANDIDATE_ADDED") { %>
+      <p>Candidate Added Successfully 👌</p>
+      <p>All candidates are as below</p>
+
+      <%}%>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th style="padding-left: 50px">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i = 0; i < candidates.length; i++) { %>
+          <tr>
+            <td><%= candidates[i].candidateID %></td>
+            <td style="padding-left: 50px">
+              <%= candidates[i].candidateName %>
+            </td>
+          </tr>
+          <%}%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
